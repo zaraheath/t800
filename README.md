@@ -12,53 +12,50 @@ El objetivo de la misión es desarrollar un **endpoint HTTP** que acepte datos *
 Le proporcionamos un ejemplo de una petición de la unidad de control a su módulo:
 
 ~~~
-[{"attack­mode":["closest­first"],"radar":[{"position":{"x":0,"
-y":40},"targets":[{"type":"T1­9","damage":80},{"type":"HK­Tank,
-"damage":20},{"type":"Human"}]},{"position":{"x":2,"y":60},"tar
-gets":[{"type":"T1­9","damage":40}]},...
+[{"attack-mode":["closest-first"],"radar":[{"position":{"x":0,"y":40},"targets":[{"type":"T1-9","damage":80},{"type":"HK-Tank","damage":20},{"type":"Human"}]},{"position":{"x":2,"y":60},"targets":[{"type":"T1-9","damage":40}]},...
 ~~~
 
 Y aquí una definición de sus parámetros:
 
-- **Attack­mode​**. Modo elegido para el ataque
+- **Attack-mode**. Modo elegido para el ataque
 - **Radar**
-    - **Position​**. Posición del grupo de Targets
-        - **X**. ​Coordenada X
-        - **Y**. ​Coordenada Y
-    - **Targets​**. Objetivos encontrados
-        - **Type**​. Tipo de objetivo
-        - **Damage​**. Daño que el objetivo puede causarnos
+    - **Position**. Posición del grupo de Targets
+        - **X**. Coordenada X
+        - **Y**. Coordenada Y
+    - **Targets**. Objetivos encontrados
+        - **Type**. Tipo de objetivo
+        - **Damage**. Daño que el objetivo puede causarnos
         
 Dada la petición anterior, su módulo debería de responder con:
 
 ~~~
-{"position":{"x":0,"y":40},"targets":["T1­9","HK­Tank"]}
+{"position":{"x":0,"y":40},"targets":["T1-9","HK-Tank"]}
 ~~~
 
 Los modos de ataque que tenemos implementados son:
-- **Closest­first​**: Atacar las zonas más cercanas.
-- **Furthest­first**​: Atacar las zonas más lejanas.
-- **Avoid­crossfire**​: No se debe atacar ninguna zona donde se encuentre algún humano.
-- **Priorize­t­x​**: Se debe priorizar siempre el ataque sobre los objetivos de tipo T­X.
+- **Closest-first**: Atacar las zonas más cercanas.
+- **Furthest-first**: Atacar las zonas más lejanas.
+- **Avoid-crossfire**: No se debe atacar ninguna zona donde se encuentre algún humano.
+- **Priorize-t-x**: Se debe priorizar siempre el ataque sobre los objetivos de tipo T­X.
 
 Los tipos de objetivos que el sistema de visión proporcionará son:
 - **Humanos**
-- **T1­9**
-- **T7­T**
-- **T­X**
+- **T1-9**
+- **T7-T**
+- **T-X**
 - **HK Airstrike**
-- **HK­Bomber**
-- **HK­Tank**
+- **HK-Bomber**
+- **HK-Tank**
 
-Tendrás que tener en cuenta que los modos de ataque se pueden encadenar, eso sí, no se podrán encadenar modos de ataque opuestos, cómo closest­first y furthest­first al mismo tiempo. Ejemplo:
+Tendrás que tener en cuenta que los modos de ataque se pueden encadenar, eso sí, no se podrán encadenar modos de ataque opuestos, cómo closest-first y furthest-first al mismo tiempo. Ejemplo:
 
 ~~~
-[{"attack­mode":["closest­first", "Priorize­t­x"],"radar": ...
+[{"attack-mode":["closest-first", "Priorize-t-x"],"radar": ...
 ~~~
 
 No debes olvidar que Skynet está construyendo un nuevo ejército de cyborg, el sistema deberá estar preparado para añadir nuevos modos de ataque.
 
-test_cases.txt​: https://github.com/zaraheath/t800/blob/master/test_cases.txt​
+test_cases.txt: https://github.com/zaraheath/t800/blob/master/test_cases.txt
 
 test_attack.sh: https://github.com/zaraheath/t800/blob/master/test_attack.sh
 
@@ -83,10 +80,7 @@ We provide an example of a request from the control unit to your module:
 
 
 ~~~
-[{"attack­mode":["closest­first"],"radar":[{"position":{"x":0,"
-y":40},"targets":[{"type":"T1­9","damage":80},{"type":"HK­Tank,
-"damage":20},{"type":"Human"}]},{"position":{"x":2,"y":60},"tar
-gets":[{"type":"T1­9","damage":40}]},...
+[{"attack-mode":["closest-first"],"radar":[{"position":{"x":0,"y":40},"targets":[{"type":"T1-9","damage":80},{"type":"HK-Tank","damage":20},{"type":"Human"}]},{"position":{"x":2,"y":60},"targets":[{"type":"T1-9","damage":40}]},...
 ~~~
 
 And here is a definition of the parameters:
@@ -103,33 +97,33 @@ And here is a definition of the parameters:
 Given the above request, your module should respond with:
 
 ~~~
-{"position":{"x":0,"y":40},"targets":["T1­9","HK­Tank"]}
+{"position":{"x":0,"y":40},"targets":["T1-9","HK-Tank"]}
 ~~~
 
 The attack modes we have implemented are:
 - **Closest-first**: Attack the nearest zones.
 - **Furthest-first**: Attack the most distant areas.
-- **Avoid-crossfire**: Don't attack any zone where any human is.
+- **Avoid-crossfire**: Don't attack any zone where any human is present.
 - **Priorize-t-x**: The attack must always be prioritized over T-X type targets.
 
 The types of targets that the vision system will provide are:
 - **Human**
-- **T1­9**
-- **T7­T**
-- **T­X**
+- **T1-9**
+- **T7-T**
+- **T-X**
 - **HK Airstrike**
-- **HK­Bomber**
-- **HK­Tank**
+- **HK-Bomber**
+- **HK-Tank**
 
 You'll have to keep in mind that attack modes can be chained, but you can't chained opposite attack modes, like closest-first and furthest-first at the same time. Example:
 
 ~~~
-[{"attack­mode":["closest­first", "Priorize­t­x"],"radar": ...
+[{"attack-mode":["closest-first", "Priorize-t-x"],"radar": ...
 ~~~
 
 Don't forget that Skynet is building a new cyborg army, the system must be ready to add new attack modes.
 
-test_cases.txt​: https://github.com/zaraheath/t800/blob/master/test_cases.txt​
+test_cases.txt: https://github.com/zaraheath/t800/blob/master/test_cases.txt
 
 test_attack.sh: https://github.com/zaraheath/t800/blob/master/test_attack.sh
 
